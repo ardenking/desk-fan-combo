@@ -1,0 +1,22 @@
+output:
+  - platform: esp8266_pwm
+    id: output_warm_white
+    pin: GPIO14
+  - platform: esp8266_pwm
+    id: output_daylight
+    pin: GPIO12
+  - platform: esp8266_pwm
+    id: desk_fan
+    pin: GPIO13
+light:
+  - platform: cwww
+    name: "desk light"
+    cold_white: output_daylight
+    warm_white: output_warm_white
+    cold_white_color_temperature: 6500 K
+    warm_white_color_temperature: 2700 K
+    
+fan:
+  - platform: binary
+    output: desk_fan
+    name: "Fan"
